@@ -1,0 +1,130 @@
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/normalize";
+@import "colors";
+@import "spinner";
+@import "dance";
+
+::-moz-selection {
+  background: hotpink;
+  text-shadow: none;
+}
+
+::selection {
+  background: hotpink;
+  text-shadow: none;
+}
+
+body {
+  background: $background-color;;
+  font-size: 16px;
+  color: $wet-asphalt;
+  overflow: hidden;
+}
+
+a {
+  color: $wet-asphalt;
+  text-decoration: none;
+  border-bottom: 2px solid $wet-asphalt;
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    border-bottom-color: $midnight-blue;
+    color: $midnight-blue;
+    text-decoration: none;
+  }
+}
+
+.tweet {
+  // Position tweets outside viewing area
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  cursor: pointer;
+  transform: translate3d(0, 0, 0);
+  color: $background-color;
+  padding: 10px;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  box-shadow: 0px 0px 4px 0px $wet-asphalt;
+  margin: 10px;
+  float: left;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;  
+  text-overflow: ellipsis;
+
+  // transition: z-index 0 ease-out !important;
+  &:hover {
+    z-index: 1;
+  }
+
+  .text {
+    // Fallback for non-webkit
+    // font-size * line-height * lines-to-show
+    height: 155px;
+    margin-bottom: 0;
+    overflow: hidden;
+  }
+
+  .trend {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    border-radius: 2px 0 0 0;
+    margin-bottom: 0;
+    background: $background-color;
+    padding: 3px 5px 2px;
+    font-size: 14px;
+  }
+
+  // Trends colors
+  // http://flatuicolors.com
+  // https://github.com/sass/node-sass/issues/263
+  $trends:  (0,  $turqoise)
+           ,(1,  $emerald)
+           ,(2,  $peter-river)
+           ,(3,  $amethyst)
+           ,(4,  $wet-asphalt)
+           ,(5,  $green-sea)
+           ,(6,  $nephritis)
+           ,(7,  $belize-hole)
+           ,(8,  $wisteria)
+           ,(9,  $midnight-blue)
+           ,(10, $sun-flower)
+           ,(11, $carrot)
+           ,(12, $alizarin)
+           ,(13, $clouds)
+           ,(14, $concrete)
+           ,(15, $orange)
+           ,(16, $pumpkin)
+           ,(17, $pomegranate)
+           ,(18, $silver)
+           ,(19, $asbestos);
+  @each $trend in $trends {
+    $trend-id: nth($trend, 1);
+    $color: nth($trend, 2);
+
+    &.trend-#{$trend-id} {
+      background: $color;
+
+      .trend {
+        color: $color;
+      }
+    }
+  }
+}
+
+#colophon {
+  text-align: right;
+  padding: 10px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  background: $background-color;
+  opacity: 0.75;
+
+  h1, p {
+    margin: 0;
+  }
+}
