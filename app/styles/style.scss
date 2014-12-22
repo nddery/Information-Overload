@@ -51,7 +51,7 @@ a {
 
   display: -webkit-box;
   -webkit-line-clamp: 7;
-  -webkit-box-orient: vertical;  
+  -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 
   // transition: z-index 0 ease-out !important;
@@ -111,6 +111,13 @@ a {
       .trend {
         color: $color;
       }
+    }
+  }
+  &.trend-13 {
+    color: $wet-asphalt;
+
+    .trend {
+      background: $wet-asphalt;
     }
   }
 }
