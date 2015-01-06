@@ -36,6 +36,18 @@ angular.module('io.directives').directive('tweet', function($window) {
            '-webkit-transition': 'bottom ' + duration + 's ease-out'
                   ,'transition': 'bottom ' + duration + 's ease-out'
         });
+
+        setTransformOrigin();
+      }
+
+      function setTransformOrigin() {
+        // Translate from one range to another
+        // http://stackoverflow.com/a/929107
+        var yOrigin = (((duration - 2) * (100 - 25)) / (8 - 2)) + 25;
+
+        el.css({
+          'transform-origin': '50% -' + Math.floor(yOrigin) + '%'
+        });
       }
 
       function pauseRotation() {
