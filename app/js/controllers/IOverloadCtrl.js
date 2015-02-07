@@ -10,7 +10,6 @@ angular.module('io.controllers')
     var tweetsLeft = $scope.tweets.length - current
         ,el        = null;
 
-      console.log(tweetsLeft);
     if (tweetsLeft >= 1) {
       el = $compile('<tweet tid="' + current + '"></test>')($scope);
       angular.element(document.getElementById('tweetsContainer')).append(el);
@@ -23,7 +22,12 @@ angular.module('io.controllers')
     }
 
     // Recursively call ourselves every second
-    setTimeout(displayTweets, 1000);
+    if (tweetsLeft >= 1) {
+      setTimeout(displayTweets, 1000);
+    }
+    else {
+      console.log('Ran out of tweets');
+    }
   }
 
   function tweetsLoaded() {
@@ -35,7 +39,7 @@ angular.module('io.controllers')
     var i          = 0
         ,tmpTweets = [];
     angular.forEach(trends, function(obj, trend) {
-      tweetsFactory.getTweetsForTrend(trend, obj.lastId, 2).then(function(tweets) {
+      tweetsFactory.getTweetsForTrend(trend, obj.lastId, 1).then(function(tweets) {
         // Add the trend to each tweets
         angular.forEach(tweets, function(tweet) {
           tweet.trend = {
