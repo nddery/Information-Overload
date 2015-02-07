@@ -1,0 +1,22 @@
+.browserupgrade {
+  display: none;
+  margin: 0.2em 0;
+  background: $alizarin;
+  color: $clouds;
+  padding: 0.2em;
+  text-align: center;
+
+  a {
+    color: $clouds;
+    border-bottom: 2px solid $clouds;
+
+    &:hover {
+      color: darken($clouds, 10%);
+      border-bottom-color: darken($clouds, 10%);
+    }
+  }
+}
+
+.no-keyframe .browserupgrade {
+  display: block;
+}

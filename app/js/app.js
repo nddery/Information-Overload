@@ -17,6 +17,9 @@ angular.module('io', [
       templateUrl: 'partials/ioverload.html',
       controller: 'IOverloadCtrl'
     })
+    .when('/test', {
+      templateUrl: 'partials/tweet-test.html'
+    })
     .otherwise('/');
 
   $locationProvider.hashPrefix('!');
@@ -33,3 +36,9 @@ Array.prototype.shuffle = function(){ //v1.0
   for(var j, x, i = this.length; i; j = Math.floor(Math.random() * i), x = this[--i], this[i] = this[j], this[j] = x);
   return this;
 };
+
+Modernizr.addTest("keyframe", function(){
+  // test wether browser recognizes the style property animationName,
+  // which is part of keyframe animations
+  return Modernizr.testAllProps('animationName');
+});

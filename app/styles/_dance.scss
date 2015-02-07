@@ -1,6 +1,5 @@
 .dance {
-  -webkit-animation: rotatetweet 2.4s infinite ease-in-out;
-  animation: rotatetweet 2.4s infinite ease-in-out;
+  animation: rotatetweet 2.4s infinite linear;
   transform-origin: 50% -50%;
 
   &.paused {
@@ -8,33 +7,10 @@
   }
 }
 
-@-webkit-keyframes rotatetweet {
-  0% { -webkit-transform: rotate(0deg); }
-  25% { -webkit-transform: rotate(7.5deg); }
-  50% { -webkit-transform: rotate(0deg); }
-  75% { -webkit-transform: rotate(-7.5deg); }
-  100% { -webkit-transform: rotate(0deg); }
-}
-
 @keyframes rotatetweet {
-  0% { 
-    transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-  }
-  25% { 
-    transform: rotate(7.5deg);
-    -webkit-transform: rotate(7.5deg);
-  }
-  50% { 
-    transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-  }
-  75% { 
-    transform: rotate(-7.5deg);
-    -webkit-transform: rotate(-7.5deg);
-  }
-  100% { 
-    transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-  }
+  0% {    transform: rotate(0deg); }
+  25% {   transform: rotate(7.5deg); }
+  50% {   transform: rotate(0deg); }
+  75% {   transform: rotate(-7.5deg); }
+  100% {  transform: rotate(0deg); }
 }
