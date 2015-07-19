@@ -39,29 +39,31 @@ angular.module('io.controllers')
     var i          = 0
         ,tmpTweets = [];
     angular.forEach(trends, function(obj, trend) {
-      tweetsFactory.getTweetsForTrend(trend, obj.lastId, 1).then(function(tweets) {
-        // Add the trend to each tweets
-        angular.forEach(tweets, function(tweet) {
-          tweet.trend = {
-             id: i
-            ,name: trend
-          };
-        });
+      tweetsFactory.getTweetsForTrend(trend, obj.lastId, 20).then(function(tweets) {
+        if (tweets) {
+          // Add the trend to each tweets
+          angular.forEach(tweets, function(tweet) {
+            tweet.trend = {
+               id: i
+              ,name: trend
+            };
+          });
 
-        tmpTweets = tmpTweets.concat(tweets);
+          tmpTweets = tmpTweets.concat(tweets);
 
-        if (tweets.length && typeof tweets[tweets.length - 1].id !== 'undefined') {
-          trends[trend].lastId = tweets[tweets.length - 1].id;
-        }
+          if (tweets.length && typeof tweets[tweets.length - 1].id !== 'undefined') {
+            trends[trend].lastId = tweets[tweets.length - 1].id;
+          }
 
-        i++;
-        if (i === Object.keys(trends).length) {
-          // Shuffle array
-          $scope.tweets = $scope.tweets.concat(tmpTweets.shuffle());
+          i++;
+          if (i === Object.keys(trends).length) {
+            // Shuffle array
+            $scope.tweets = $scope.tweets.concat(tmpTweets.shuffle());
 
-          if (firstLoad) {
-            firstLoad = false;
-            tweetsLoaded();
+            if (firstLoad) {
+              firstLoad = false;
+              tweetsLoaded();
+            }
           }
         }
       });
